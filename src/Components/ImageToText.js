@@ -64,13 +64,18 @@ export const ImageToText = (props) => {
             <div className='d-flex justify-content-between align-items-center'>
                 <h1>{props.heading}</h1>
                 <div>
-                    <button disabled={text.length === 0} className='btn btn-primary my-2 mx-2' onClick={()=> setText('')} ><BsEraser /></button>
+                    <button disabled={text.length === 0} className='btn btn-primary my-2 mx-2' onClick={() => setText('')} ><BsEraser /></button>
                     <button disabled={text.length === 0} className='btn btn-primary my-2 mx-2' onClick={handleCopyClick} ><FaCopy /></button>
                 </div>
             </div>
             <div className="mb-3">
-                <textarea className="form-control" value={text}
-                    style={{ backgroundColor: props.mode === 'dark' ? 'gray' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }} id="myBox" rows="9"></textarea>
+                <textarea
+                    className="form-control"
+                    value={text}
+                    style={{ backgroundColor: props.mode === 'dark' ? 'gray' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }}
+                    id="myBox"
+                    rows="9"
+                ></textarea>
             </div>
             {isLoading && (
                 <>

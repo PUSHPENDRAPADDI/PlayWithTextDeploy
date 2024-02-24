@@ -12,6 +12,8 @@ import {
 } from "react-router-dom";
 import Files from "./Components/Files";
 import { ImageToText } from './Components/ImageToText';
+import Dashboard from './Components/Dashboard';
+import { Dictionary } from './Components/Dictionary';
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -29,25 +31,25 @@ function App() {
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#042743'
-      showAlert("Dark mode has been enabled", "success");
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white'
-      showAlert("Light mode has been enabled", "success");
     }
   }
   return (
     <Router>
       <div className="container my-3">
-        <Navbar title="TextsUtils" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="Play With Text" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <Routes>
-          <Route path='/' element={<TextForm heading="Enter the text to analyse" mode={mode} showAlert={showAlert} />} />
+          <Route path='/' element={<Dashboard heading="Welcom to our portal here we provide services" mode={mode} showAlert={showAlert} />} />
+          <Route path='/textForm' element={<TextForm heading="Enter the text to analyse" mode={mode} showAlert={showAlert} />} />
           <Route path='/regex' element={<Regex heading="Here You get Regex" mode={mode} showAlert={showAlert} />} />
           <Route path='/fileManage' element={<Files heading="Here you get all type of dummy Files" mode={mode} toggleMode={toggleMode} />} />
           <Route path='/imageToText' element={<ImageToText heading="Here you can extract text from Image" mode={mode} showAlert={showAlert} />} />
-          <Route path='/about' element={<About />} />
+          <Route path='/dictionary' element={<Dictionary heading="Here is your dictionary" mode={mode} showAlert={showAlert} />} />
+          <Route path='/about' element={<About mode={mode} showAlert={showAlert} />} />
         </Routes>
       </div>
     </Router>

@@ -101,8 +101,13 @@ export default function Regex(props) {
             <div className="container" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }} >
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text}
-                        style={{ backgroundColor: props.mode === 'dark' ? 'gray' : 'white', color: props.mode === 'dark' ? 'white' : '#042743', marginBottom: "10px" }} id="myBox" rows="3"></textarea>
+                    <textarea
+                        className="form-control"
+                        value={text}
+                        style={{ backgroundColor: props.mode === 'dark' ? 'gray' : 'white', color: props.mode === 'dark' ? 'white' : '#042743', marginBottom: "10px" }}
+                        id="myBox"
+                        rows="3"
+                    ></textarea>
                     <select onChange={(e) => setText(e.target.value)} className="form-control enable-button-pointers" value={text}
                         style={{ backgroundColor: props.mode === 'dark' ? 'gray' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }} rows="3"
                         name="regexType" id="regexType">

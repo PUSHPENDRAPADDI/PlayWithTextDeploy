@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { saveAs } from 'file-saver';
 
-const Files = () => {
+const Files = (props) => {
     const fileName = 'Dummy'
     const message = 'Welocome to our Services'
     const download = (type) => {
@@ -79,7 +79,7 @@ const Files = () => {
             const pptxData = new Blob([message], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
             saveAs(pptxData, `${fileName}.pptx`);
         } else if (type = 'csv') {
-            const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(message);
+            const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(message.split(' ').join(','));
             const link = document.createElement("a");
             link.setAttribute("href", csvContent);
             link.setAttribute("download", `${fileName}.csv`);
@@ -89,9 +89,10 @@ const Files = () => {
     };
 
     return (
-        <div className="row">
+        <div className="row" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
+            <h1>{props.heading}</h1>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('pdf')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png" alt="PDF" />
                     </div>
@@ -101,7 +102,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('excel')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://static-00.iconduck.com/assets.00/ms-excel-icon-2048x2026-nws24wyy.png" alt="EXCEL" />
                     </div>
@@ -111,7 +112,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('txt')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://cdn-icons-png.flaticon.com/512/2656/2656402.png" alt="TXT" />
                     </div>
@@ -121,7 +122,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('json')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://cdn.iconscout.com/icon/free/png-256/free-json-file-1-504451.png" alt="JSON" />
                     </div>
@@ -131,7 +132,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('js')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JS" />
                     </div>
@@ -141,7 +142,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('html')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://cdn.iconscout.com/icon/free/png-256/free-html-file-2330569-1950410.png" alt="HTML" />
                     </div>
@@ -151,7 +152,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('docx')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://mailmeteor.com/logos/assets/PNG/Google_Docs_Logo_512px.png" alt="DOCX" />
                     </div>
@@ -161,7 +162,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('pptx')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://static.vecteezy.com/system/resources/previews/015/081/209/original/pptx-file-format-3d-rendering-isometric-icon-png.png" alt="PPTX" />
                     </div>
@@ -171,7 +172,7 @@ const Files = () => {
                 </div>
             </div>
             <div className="col-md-3 mb-3 cursor-pointer" onClick={() => download('csv')}>
-                <div className="card text-white bg-secondary cursor-pointer">
+                <div className={`card cursor-pointer m-3 text-center ${props.mode === 'dark' && 'text-white bg-dark'}`} style={{ maxWidth: '18rem' }}>
                     <div className="card-header">
                         <img width='30px' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFUHUtjG-lxncEmW748Rvtd2ILmLN6N653zOb-EkL56A&s" alt="CSV" />
                     </div>

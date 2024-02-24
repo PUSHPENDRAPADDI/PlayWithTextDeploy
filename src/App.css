@@ -55,3 +55,18 @@
 .icon:hover {
   transform: rotate(-30deg);
 }
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+.card-hover:hover{
+  background-color: rgb(216, 240, 240) !important ;
+}
+.card-hover-dark:hover{
+  background-color: rgb(28 33 38) !important ;
+}
+.form-check{
+  padding: 0px !important;
+}
